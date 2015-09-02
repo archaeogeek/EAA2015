@@ -9,7 +9,7 @@
 body {
   font-family: ETBembo, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   background-color: #fffff8;
-  letter-spacing:-5px;
+  letter-spacing:-4px;
   background-size: cover;
   color: #111;
   margin:0;
@@ -63,6 +63,10 @@ body.center-image {
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center 40px;
+}
+
+footer {
+  font-size: 50%;
 }
 
 
