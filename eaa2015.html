@@ -12,12 +12,13 @@
     <small class='nobreak'>@archaeogeek / Jo Cook / Astun Technology</small>
 </div>
 <div>
+<div>
   I'm an ex-archaeologist and GeoGeek,
   <em>Passionate</em> about open source software, open data and open standards,
   (and still <em>very</em> keen on archaeology)
 </div>
 <div>I was on the team that produced the Urban Archaeological Databases for Lancaster and Carlisle for Oxford Archaeology (North)</div>
-<div>UADs are great resources, but often locked away and never really used. The best-case scenario is absorption into the HER.</div>
+<div>UADs are great resources, but often locked away and never really used. The best-case scenario is absorption into the SMR/HER.</div>
 <div><img src='images/archives.jpg' />
 useful?
 </div>
@@ -35,7 +36,7 @@ useful?
 </div>
 <div>Question: How to achieve this with not a lot of time or money?</div>
 <div><img src='images/golden-retriever-and-science1.jpg' /></div>
-<div>Primary objective: Beyond the hackathon, whatever we did had to be <em>standards-compliant, update-able, re-usable and sustainable</em> in the long term</div>
+<div>Secondary objective: Beyond the hackathon, whatever we did had to be <em>standards-compliant, update-able, re-usable and sustainable</em> in the long term</div>
 <div>The core files comprised:
   <ul>
     <li>a number of spatial datasets (shape files)</li> 
@@ -55,11 +56,12 @@ useful?
   (see <a  target='_blank' href='https://github.com/archaeogeek/mdb2postgres'>github.com/archaeogeek/mdb2postgres</a>)
 </div>
 <div>Job #2: Make the spatial data available via a web interface</div>
-<div>Again, looking for open source, sustainable, re-usable, I choose Geoserver for this as it has a web-based gui
+<div>Again, looking for open source, sustainable, re-usable, I choose Geoserver for the web-based gui
   <br />
   <img src='images/GeoServer_500.png' />
 </div>
 <div data-bodyclass='center-image'><img src='images/mackreth1778.png' />
+  <br />
   <br />
   <br />
   <br />
@@ -77,8 +79,8 @@ useful?
 <div>This provided a php-based RESTful interface for getting at PostGIS functions such as buffers, intersects, reprojections etc</div>
 <div>Some database manipulation was needed to change references to images, tidy up glitches etc<br />
   These processes were put into a PostgreSQL stored function so they could be repeated if the data was ever updated</div>
-<div>Documentation was produced using GitBook<br />
-  So it was online and could be updated throughout the hackathon as needed</div>
+<div>Documentation was produced using <a target="_blank" href="http://www.gitbook.io/">GitBook</a><br />
+  So it was available <a target="_blank" href="http://hacklancaster.github.io/beyondthecastle_uad/index.html">online</a> and could be updated throughout the hackathon as needed</div>
 <div>How did it go?</div>
 <div>Two teams of hackers used the data</div>
 <div>The first created a map app, allowing people to follow a trail around the City "checking in" to monuments from different periods</div>
