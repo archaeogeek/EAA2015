@@ -36,21 +36,21 @@
 </div>
 <div>My scientific check on this:<br />
   <img src='images/twitter_question.png' /></div>
-<div><img src='images/tumbleweed.jpg' />
-  The Result
+<div>
+  The Result:
 </div>
-<div>Secondary objective: Beyond the hackathon, whatever we did had to be <em>standards-compliant, update-able, re-usable and sustainable</em> in the long term</div>
-<div>The core files comprised:
-  <ul>
-    <li>a number of spatial datasets (shape files)</li> 
-    <li>an access 97 database</li> 
-    <li>some historic maps</li>
-    <li>several folders full of images</li>
-  </ul>
+<div>...
 </div>
-<div>Task #1: How to convert the spatial data and access database into PostgreSQL</div>
-<div><p>PostgreSQL was a no-brainer due to it's spatial capabilities. GitHub has a huge number of open source, OS-agnostic libraries for working with MS Access.</p>
-  <p>I used the following and combined them into some python scripts for future reuse:</p>
+<div>Secondary objective: Beyond the hackathon, whatever we did had to be <em>standards-compliant, updateable, reusable and sustainable</em> in the long term</div>
+<div>The data I had to work with:<br />
+  A number of spatial datasets (shape files),<br />
+  An access 97 database,<br /> 
+  Lots of georeferenced scans of historic maps,<br />
+  Lots of historic images such as paintings or photos
+</div>
+<div>Task #1: Get the data out of Microsoft Access 97!</div>
+<div>PostgreSQL was a no-brainer due to it's spatial capabilities, and there are plenty of open source, OS-agnostic libraries for working with MS Access.<br />
+I used the following and combined them into some python scripts for future reuse:<br />
   <ul>
     <li>PyODBC</li>
     <li>csv</li>
@@ -58,19 +58,18 @@
   </ul>
   (see <a  target='_blank' href='https://github.com/archaeogeek/mdb2postgres'>github.com/archaeogeek/mdb2postgres</a>)
 </div>
-<div>Task #2: How to make the spatial data available via a web interface</div>
-<div>Again, looking for open source, sustainable, re-usable, I choose Geoserver for the web-based gui
+<div>Task #2: Make the spatial data available via a web interface</div>
+<div>Again, looking for open source, sustainable, re-usable options, I choose Geoserver for the web-based gui
   <br />
   <img src='images/GeoServer_500.png' />
 </div>
-<div data-bodyclass='center-image'>This also allowed me to create seamless<br />
-  base mapping layers from the <a target='_blank' href='http://lancasteruadgeo.oxfordarchaeology.com/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.web.demo.MapPreviewPage'>historic maps</a><br />
+<div data-bodyclass='center-image'>This also allowed me to create seamless base mapping layers from the <a target='_blank' href='http://lancasteruadgeo.oxfordarchaeology.com/geoserver/web/?wicket:bookmarkablePage=:org.geoserver.web.demo.MapPreviewPage'>historic maps</a><br />
   <img src='images/mackreth1778.png' />
 </div>
-<div>Task #3: How to make the non-spatial data available</div>
+<div>Task #3: Make the non-spatial data available</div>
 <div>RESTful approaches seemed best, so I found <a target='_blank' href="https://github.com/alixaxel/ArrestDB">ArrestDB</a><br />
   This allowed us to use a simple tablename/attribute protocol to get at data in a json format, eg <a target='_blank' href='http://lancasteruad.oxfordarchaeology.com/rest/index.php/tblBibliography/?limit=5&by=Doc_Title'>first 5 entries in the bibliography table, ordered by title</a></div>
-<div>Task #4: How to allow spatial analysis</div>
+<div>Task #4: Allow some spatial analysis</div>
 <div>REST again! <a target='_blank' href="http://maps.co.mecklenburg.nc.us/rest/">Dirt-Simple POSTGIS HTTP API</a><br />
   This provided an interface for accessing PostGIS functions such as buffers, intersects, and reprojections, again returning results in json format<br />
   For example <a target="_blank" href="http://lancasteruad.oxfordarchaeology.com/pgrest/v1/ws_geo_getcentroid.php?table=monspres_polys&srid=4326&geometryfield=wkb_geometry&parameters=monid=%27531%27">the centroids of a specific monument</a>
@@ -78,7 +77,7 @@
 <div>Along with the images, all of this was hosted on a linux virtual machine running a simple web server</div>
 <div>Documentation was produced using <a target="_blank" href="http://www.gitbook.io/">GitBook</a><br />
   So it was available <a target="_blank" href="http://hacklancaster.github.io/beyondthecastle_uad/index.html">online</a> and could be updated throughout the hackathon as needed</div>
-<div>How did it go?</div>
+<div>So, how did it go?</div>
 <div data-bodyclass='center-image'>Two teams of hackers used the data<br />
   <img src='images/hack_team_1.jpg' />
 </div>
@@ -86,8 +85,7 @@
   around the City "checking in" to monuments<br />
   <img src='images/hack_team_2.jpg' />
 </div>
-<div>The second created a tool visualising the<br />
-  distribution of finds by period and type<br />
+<div>The second created a tool visualising the distribution of finds by period and type<br />
   <img src='images/hack_team_3.jpg' />
 </div>
 <div>Observations (NOT criticisms)</div>
@@ -102,24 +100,29 @@
 </div>
 <div><em># 3: People may jump to tenuous conclusions</em><br />
   Correlation does not equal causation!<br />
-  Finds classified in ten-year blocks do not imply a peak every decade!</div>
+  &ldquo;(non-professional) interpretations may... be regarded by the archaeologist as an exercise in myth or superstition&rdquo;
+  <footer>Suzie Thomas, the University of Helsinki</footer>
+</div>
 <div>In conclusion, non-archaeologists may use the data in unexpected ways...<br />
-BUT at least they used the data!</div>
+BUT using genuine archaeological data is a step forward in public engagement with the discipline.</div>
 <div>Moving forward...</div>
-<div>We have a toolkit that could be quickly and easily applied to any UAD to make it available online and for wider use/analysis</div>
+<div>We have a framework that could be quickly and easily applied to any UAD to make it available online and for wider use/analysis by both archaeologists and the general public</div>
 <div>All the components are open source, and don't require a huge amount of expertise to assemble or configure</div>
 <div>Processes can be automated and repeated, so the data can be updated whenever necessary</div>
 <div>BUT...</div>
-<div>We need a "translation-layer" to turn UAD terminologies and structures into something easier for non-specialists to understand</div>
+<div>We need a "translation-layer" to convert UAD terminologies and structures into something easier for non-specialists to understand, without losing the academic rigour</div>
 <div>Deeply relational structures could be flattened into single tables<br />
-  But this may bring additional complications<br />
-  For updating, querying, displaying etc</div>
-<div>However the flexibility of this approach means that front-ends can be easily adapted to follow current trends.</div>
+  but this may bring additional complications<br />
+  for updating, querying, displaying etc...</div>
+<div>However the flexibility of this approach means that multiple front-ends can be constructed to serve different purposes and engage with different demographics</div>
  <div>So you want to produce a Tinder for Monuments? Go ahead!<br />
  <img src='images/tinder.jpg' />
 </div>
 <div>You can also take advantage of the latest technology<br />
   <img src='images/3D_GIS.jpg' />
+</div>
+<div>The risk of <em>not</em> engaging is that real harm is done through lack of knowledge<br />
+  <img src='images/tomb_bench.png' />
 </div>
 <div>The most important thing is to make your data available because...</div>
 <div><blockquote>&ldquo;The coolest thing to do with your data will be thought of by someone else&rdquo;
@@ -129,12 +132,11 @@ BUT at least they used the data!</div>
 <div>and...<br />
   <blockquote>&ldquo;The set of useful things one can do with a given informational resource is always larger than can be done (or even thought of) by one individual or group&rdquo;
   </blockquote>
-  <footer>also Rufus Pollock and Jo Walsh, the Open Knowledge Foundation</footer>
+  <footer>Rufus Pollock and Jo Walsh, the Open Knowledge Foundation</footer>
 </div>
-<div>The alternative is that real harm is done through lack of knowledge<br />
-  <img src='images/tomb_bench.png' />
+<div>Thanks for listening!<br />
+  <small class='nobreak'>@archaeogeek / Jo Cook / Astun Technology</small>
 </div>
-<div>Thanks for listening!</div>
 
 
 
